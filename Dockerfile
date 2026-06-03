@@ -1,7 +1,7 @@
 # Build Stage
 FROM maven:3.9-eclipse-temurin-21 AS builder
 
-WORKDIR /app
+WORKDIR /demo
 
 COPY pom.xml .
 COPY src ./src
@@ -11,10 +11,10 @@ RUN mvn clean package -DskipTests
 # Runtime Stage
 FROM eclipse-temurin:21-jre
 
-WORKDIR /app
+WORKDIR /demo
 
-COPY --from=builder /app/target/*.jar app.jar
+COPY --from=builder /demo/target/*.jar demo.jar
 
 EXPOSE 8081
 
-ENTRYPOINT ["java","-jar","app.jar"]
+ENTRYPOINT ["java","-jar","demo.jar"]

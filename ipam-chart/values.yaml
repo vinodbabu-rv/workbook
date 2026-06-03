@@ -1,0 +1,27 @@
+replicaCount: 1
+
+image:
+  repository: demo
+  tag: "latest"
+  pullPolicy: IfNotPresent
+
+service:
+  type: LoadBalancer
+  port: 80
+  targetPort: 8081
+
+db:
+  url: jdbc:postgresql://host.docker.internal:5432/testdb
+  username: postgres
+  password: testdb
+
+resources:
+  requests:
+    memory: "256Mi"
+    cpu: "250m"
+  limits:
+    memory: "512Mi"
+    cpu: "500m"
+
+deployment:
+  enabled: true

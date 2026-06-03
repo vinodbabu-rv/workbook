@@ -1,0 +1,14 @@
+iPam application deployed successfully!
+
+Release: {{ .Release.Name }}
+Replicas: {{ .Values.replicaCount }}
+Image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+
+To get the service URL:
+  kubectl get svc ipam-app-service
+
+To check pod status:
+  kubectl get pods -l app=ipam-app
+
+To view logs:
+  kubectl logs -l app=ipam-app --tail=50

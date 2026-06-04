@@ -1,0 +1,19 @@
+{
+  "namespace": "com.demo.avro",
+  "type": "record",
+  "name": "Router",
+  "fields": [
+    {
+      "name": "id",
+      "type": "string"
+    },
+    {
+      "name": "name",
+      "type": "string"
+    },
+    {
+      "name": "serial",
+      "type": "string"
+    }
+  ]
+}

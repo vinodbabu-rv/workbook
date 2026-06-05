@@ -24,7 +24,7 @@ public class KafkaProducerConfig {
 
         config.put(
                 ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,
-                "localhost:9092"
+                "host.docker.internal:9092"
         );
 
         config.put(
@@ -39,7 +39,7 @@ public class KafkaProducerConfig {
 
         config.put(
                 "schema.registry.url",
-                "http://localhost:8084"
+                "http://host.docker.internal:8084"
         );
 
         return new DefaultKafkaProducerFactory<>(config);

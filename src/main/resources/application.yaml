@@ -14,9 +14,9 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
   kafka:
-    bootstrap-servers: localhost:9092
+    bootstrap-servers: host.docker.internal:9092
     properties:
-      schema.registry.url: http://localhost:8084
+      schema.registry.url: http://host.docker.internal:8084
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
@@ -26,6 +26,10 @@ springdoc:
     enabled: true
   swagger-ui:
     enabled: true
+
+logging:
+  level:
+    org.springframework.boot.autoconfigure: INFO
 
 server:
   port: 8081

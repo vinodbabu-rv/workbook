@@ -6,6 +6,7 @@ import com.ipam.demo.exceptions.ResourceNotFoundException;
 import com.ipam.demo.service.RouterService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
@@ -19,15 +20,17 @@ public class RouterServiceImpl implements RouterService {
     @Autowired
     RouterRepository routerRepository;
 
-    private final KafkaTemplate<String, Router> kafkaTemplate;
+    @Autowired
+    private final KafkaTemplate<String, com.demo.avro.Router> kafkaTemplate;
 
     @Override
     public Router create(Router r) {
         r.setId(UUID.randomUUID());
         Router persistedRouter = routerRepository.save(r);
+        com.demo.avro.Router rAvro = new com.demo.avro.Router(persistedRouter.getId().toString(), persistedRouter.getName(), persistedRouter.getSerial());
         kafkaTemplate.send(
                 "router-topic",
-                persistedRouter
+                rAvro
         );
         return persistedRouter;
     }

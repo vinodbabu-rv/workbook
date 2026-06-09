@@ -1,13 +1,11 @@
 package com.ipam.demo.exceptions;
 
-import java.util.UUID;
-
 public class ResourceNotFoundException extends RuntimeException {
     public ResourceNotFoundException() {
-        super("Resource Not Found");
+        super("Resource Not Found Vinod");
     }
 
-    public ResourceNotFoundException(UUID id){
-        super(id.toString());
+    public ResourceNotFoundException(String id){
+        super(id);
     }
 }

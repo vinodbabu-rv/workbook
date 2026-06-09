@@ -1,18 +1,23 @@
 spring:
   application:
-    name: iPamhe
-  datasource:
-    url: jdbc:postgresql://host.docker.internal:5432/testdb
+    name: iPam
+    #datasource:
+    #url: jdbc:postgresql://host.docker.internal:5432/testdb
     #url: jdbc:postgresql://postgres:5432/testdb
-    username: postgres
-    password: testdb
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
+    #username: postgres
+    #password: testdb
+  neo4j:
+    uri: bolt://localhost:7687
+    authentication:
+      username: neo4j
+      password: testneodb
+#  jpa:
+      #    hibernate:
+      # ddl-auto: update
+    #show-sql: true
+      #properties:
+        #hibernate:
+      #dialect: org.hibernate.dialect.PostgreSQLDialect
   kafka:
     bootstrap-servers: host.docker.internal:9092
     properties:

@@ -8,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/router")
@@ -24,13 +23,13 @@ public class RouterController {
     }
 
     @GetMapping
-    public ResponseEntity<Router> getHotel(@RequestParam("id") UUID id) {
+    public ResponseEntity<Router> getRouter(@RequestParam("id") String title) {
         return ResponseEntity.status(HttpStatus.OK).body(routerService
-                .get(id));
+                .get(title));
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<Router>> getHotels() {
+    public ResponseEntity<List<Router>> getRouters() {
         return ResponseEntity.ok(routerService
                 .getAll());
     }

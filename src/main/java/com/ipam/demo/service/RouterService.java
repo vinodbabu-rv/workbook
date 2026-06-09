@@ -9,7 +9,7 @@ public interface RouterService {
 
     public Router create(Router r);
 
-    public Router get(UUID id);
+    public Router get(String title);
 
     public List<Router> getAll();
 }

@@ -3,7 +3,7 @@
  *
  * DO NOT EDIT DIRECTLY
  */
-package com.demo.avro;
+package com.ipam.demo.avro;
 
 import org.apache.avro.generic.GenericArray;
 import org.apache.avro.specific.SpecificData;
@@ -14,10 +14,10 @@ import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class Router extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -199838866590943371L;
+  private static final long serialVersionUID = -3041847465540703048L;
 
 
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Router\",\"namespace\":\"com.demo.avro\",\"fields\":[{\"name\":\"id\",\"type\":\"string\"},{\"name\":\"name\",\"type\":\"string\"},{\"name\":\"serial\",\"type\":\"string\"}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Router\",\"namespace\":\"com.ipam.demo.avro\",\"fields\":[{\"name\":\"id\",\"type\":[\"null\",\"long\"],\"default\":null},{\"name\":\"title\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"serial\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"ports\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"Port\",\"fields\":[{\"name\":\"id\",\"type\":[\"null\",\"long\"],\"default\":null},{\"name\":\"name\",\"type\":[\"null\",\"string\"],\"default\":null}]}},\"default\":[]}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static final SpecificData MODEL$ = new SpecificData();
@@ -73,9 +73,10 @@ public class Router extends org.apache.avro.specific.SpecificRecordBase implemen
     return DECODER.decode(b);
   }
 
-  private java.lang.CharSequence id;
-  private java.lang.CharSequence name;
+  private java.lang.Long id;
+  private java.lang.CharSequence title;
   private java.lang.CharSequence serial;
+  private java.util.List<com.ipam.demo.avro.Port> ports;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -87,13 +88,15 @@ public class Router extends org.apache.avro.specific.SpecificRecordBase implemen
   /**
    * All-args constructor.
    * @param id The new value for id
-   * @param name The new value for name
+   * @param title The new value for title
    * @param serial The new value for serial
+   * @param ports The new value for ports
    */
-  public Router(java.lang.CharSequence id, java.lang.CharSequence name, java.lang.CharSequence serial) {
+  public Router(java.lang.Long id, java.lang.CharSequence title, java.lang.CharSequence serial, java.util.List<com.ipam.demo.avro.Port> ports) {
     this.id = id;
-    this.name = name;
+    this.title = title;
     this.serial = serial;
+    this.ports = ports;
   }
 
   @Override
@@ -107,8 +110,9 @@ public class Router extends org.apache.avro.specific.SpecificRecordBase implemen
   public java.lang.Object get(int field$) {
     switch (field$) {
     case 0: return id;
-    case 1: return name;
+    case 1: return title;
     case 2: return serial;
+    case 3: return ports;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
@@ -118,9 +122,10 @@ public class Router extends org.apache.avro.specific.SpecificRecordBase implemen
   @SuppressWarnings(value="unchecked")
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
-    case 0: id = (java.lang.CharSequence)value$; break;
-    case 1: name = (java.lang.CharSequence)value$; break;
+    case 0: id = (java.lang.Long)value$; break;
+    case 1: title = (java.lang.CharSequence)value$; break;
     case 2: serial = (java.lang.CharSequence)value$; break;
+    case 3: ports = (java.util.List<com.ipam.demo.avro.Port>)value$; break;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
@@ -129,7 +134,7 @@ public class Router extends org.apache.avro.specific.SpecificRecordBase implemen
    * Gets the value of the 'id' field.
    * @return The value of the 'id' field.
    */
-  public java.lang.CharSequence getId() {
+  public java.lang.Long getId() {
     return id;
   }
 
@@ -138,25 +143,25 @@ public class Router extends org.apache.avro.specific.SpecificRecordBase implemen
    * Sets the value of the 'id' field.
    * @param value the value to set.
    */
-  public void setId(java.lang.CharSequence value) {
+  public void setId(java.lang.Long value) {
     this.id = value;
   }
 
   /**
-   * Gets the value of the 'name' field.
-   * @return The value of the 'name' field.
+   * Gets the value of the 'title' field.
+   * @return The value of the 'title' field.
    */
-  public java.lang.CharSequence getName() {
-    return name;
+  public java.lang.CharSequence getTitle() {
+    return title;
   }
 
 
   /**
-   * Sets the value of the 'name' field.
+   * Sets the value of the 'title' field.
    * @param value the value to set.
    */
-  public void setName(java.lang.CharSequence value) {
-    this.name = value;
+  public void setTitle(java.lang.CharSequence value) {
+    this.title = value;
   }
 
   /**
@@ -177,11 +182,28 @@ public class Router extends org.apache.avro.specific.SpecificRecordBase implemen
   }
 
   /**
+   * Gets the value of the 'ports' field.
+   * @return The value of the 'ports' field.
+   */
+  public java.util.List<com.ipam.demo.avro.Port> getPorts() {
+    return ports;
+  }
+
+
+  /**
+   * Sets the value of the 'ports' field.
+   * @param value the value to set.
+   */
+  public void setPorts(java.util.List<com.ipam.demo.avro.Port> value) {
+    this.ports = value;
+  }
+
+  /**
    * Creates a new Router RecordBuilder.
    * @return A new Router RecordBuilder
    */
-  public static com.demo.avro.Router.Builder newBuilder() {
-    return new com.demo.avro.Router.Builder();
+  public static com.ipam.demo.avro.Router.Builder newBuilder() {
+    return new com.ipam.demo.avro.Router.Builder();
   }
 
   /**
@@ -189,11 +211,11 @@ public class Router extends org.apache.avro.specific.SpecificRecordBase implemen
    * @param other The existing builder to copy.
    * @return A new Router RecordBuilder
    */
-  public static com.demo.avro.Router.Builder newBuilder(com.demo.avro.Router.Builder other) {
+  public static com.ipam.demo.avro.Router.Builder newBuilder(com.ipam.demo.avro.Router.Builder other) {
     if (other == null) {
-      return new com.demo.avro.Router.Builder();
+      return new com.ipam.demo.avro.Router.Builder();
     } else {
-      return new com.demo.avro.Router.Builder(other);
+      return new com.ipam.demo.avro.Router.Builder(other);
     }
   }
 
@@ -202,11 +224,11 @@ public class Router extends org.apache.avro.specific.SpecificRecordBase implemen
    * @param other The existing instance to copy.
    * @return A new Router RecordBuilder
    */
-  public static com.demo.avro.Router.Builder newBuilder(com.demo.avro.Router other) {
+  public static com.ipam.demo.avro.Router.Builder newBuilder(com.ipam.demo.avro.Router other) {
     if (other == null) {
-      return new com.demo.avro.Router.Builder();
+      return new com.ipam.demo.avro.Router.Builder();
     } else {
-      return new com.demo.avro.Router.Builder(other);
+      return new com.ipam.demo.avro.Router.Builder(other);
     }
   }
 
@@ -217,9 +239,10 @@ public class Router extends org.apache.avro.specific.SpecificRecordBase implemen
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<Router>
     implements org.apache.avro.data.RecordBuilder<Router> {
 
-    private java.lang.CharSequence id;
-    private java.lang.CharSequence name;
+    private java.lang.Long id;
+    private java.lang.CharSequence title;
     private java.lang.CharSequence serial;
+    private java.util.List<com.ipam.demo.avro.Port> ports;
 
     /** Creates a new Builder */
     private Builder() {
@@ -230,19 +253,23 @@ public class Router extends org.apache.avro.specific.SpecificRecordBase implemen
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(com.demo.avro.Router.Builder other) {
+    private Builder(com.ipam.demo.avro.Router.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.id)) {
         this.id = data().deepCopy(fields()[0].schema(), other.id);
         fieldSetFlags()[0] = other.fieldSetFlags()[0];
       }
-      if (isValidValue(fields()[1], other.name)) {
-        this.name = data().deepCopy(fields()[1].schema(), other.name);
+      if (isValidValue(fields()[1], other.title)) {
+        this.title = data().deepCopy(fields()[1].schema(), other.title);
         fieldSetFlags()[1] = other.fieldSetFlags()[1];
       }
       if (isValidValue(fields()[2], other.serial)) {
         this.serial = data().deepCopy(fields()[2].schema(), other.serial);
         fieldSetFlags()[2] = other.fieldSetFlags()[2];
+      }
+      if (isValidValue(fields()[3], other.ports)) {
+        this.ports = data().deepCopy(fields()[3].schema(), other.ports);
+        fieldSetFlags()[3] = other.fieldSetFlags()[3];
       }
     }
 
@@ -250,19 +277,23 @@ public class Router extends org.apache.avro.specific.SpecificRecordBase implemen
      * Creates a Builder by copying an existing Router instance
      * @param other The existing instance to copy.
      */
-    private Builder(com.demo.avro.Router other) {
+    private Builder(com.ipam.demo.avro.Router other) {
       super(SCHEMA$, MODEL$);
       if (isValidValue(fields()[0], other.id)) {
         this.id = data().deepCopy(fields()[0].schema(), other.id);
         fieldSetFlags()[0] = true;
       }
-      if (isValidValue(fields()[1], other.name)) {
-        this.name = data().deepCopy(fields()[1].schema(), other.name);
+      if (isValidValue(fields()[1], other.title)) {
+        this.title = data().deepCopy(fields()[1].schema(), other.title);
         fieldSetFlags()[1] = true;
       }
       if (isValidValue(fields()[2], other.serial)) {
         this.serial = data().deepCopy(fields()[2].schema(), other.serial);
         fieldSetFlags()[2] = true;
+      }
+      if (isValidValue(fields()[3], other.ports)) {
+        this.ports = data().deepCopy(fields()[3].schema(), other.ports);
+        fieldSetFlags()[3] = true;
       }
     }
 
@@ -270,7 +301,7 @@ public class Router extends org.apache.avro.specific.SpecificRecordBase implemen
       * Gets the value of the 'id' field.
       * @return The value.
       */
-    public java.lang.CharSequence getId() {
+    public java.lang.Long getId() {
       return id;
     }
 
@@ -280,7 +311,7 @@ public class Router extends org.apache.avro.specific.SpecificRecordBase implemen
       * @param value The value of 'id'.
       * @return This builder.
       */
-    public com.demo.avro.Router.Builder setId(java.lang.CharSequence value) {
+    public com.ipam.demo.avro.Router.Builder setId(java.lang.Long value) {
       validate(fields()[0], value);
       this.id = value;
       fieldSetFlags()[0] = true;
@@ -300,48 +331,48 @@ public class Router extends org.apache.avro.specific.SpecificRecordBase implemen
       * Clears the value of the 'id' field.
       * @return This builder.
       */
-    public com.demo.avro.Router.Builder clearId() {
+    public com.ipam.demo.avro.Router.Builder clearId() {
       id = null;
       fieldSetFlags()[0] = false;
       return this;
     }
 
     /**
-      * Gets the value of the 'name' field.
+      * Gets the value of the 'title' field.
       * @return The value.
       */
-    public java.lang.CharSequence getName() {
-      return name;
+    public java.lang.CharSequence getTitle() {
+      return title;
     }
 
 
     /**
-      * Sets the value of the 'name' field.
-      * @param value The value of 'name'.
+      * Sets the value of the 'title' field.
+      * @param value The value of 'title'.
       * @return This builder.
       */
-    public com.demo.avro.Router.Builder setName(java.lang.CharSequence value) {
+    public com.ipam.demo.avro.Router.Builder setTitle(java.lang.CharSequence value) {
       validate(fields()[1], value);
-      this.name = value;
+      this.title = value;
       fieldSetFlags()[1] = true;
       return this;
     }
 
     /**
-      * Checks whether the 'name' field has been set.
-      * @return True if the 'name' field has been set, false otherwise.
+      * Checks whether the 'title' field has been set.
+      * @return True if the 'title' field has been set, false otherwise.
       */
-    public boolean hasName() {
+    public boolean hasTitle() {
       return fieldSetFlags()[1];
     }
 
 
     /**
-      * Clears the value of the 'name' field.
+      * Clears the value of the 'title' field.
       * @return This builder.
       */
-    public com.demo.avro.Router.Builder clearName() {
-      name = null;
+    public com.ipam.demo.avro.Router.Builder clearTitle() {
+      title = null;
       fieldSetFlags()[1] = false;
       return this;
     }
@@ -360,7 +391,7 @@ public class Router extends org.apache.avro.specific.SpecificRecordBase implemen
       * @param value The value of 'serial'.
       * @return This builder.
       */
-    public com.demo.avro.Router.Builder setSerial(java.lang.CharSequence value) {
+    public com.ipam.demo.avro.Router.Builder setSerial(java.lang.CharSequence value) {
       validate(fields()[2], value);
       this.serial = value;
       fieldSetFlags()[2] = true;
@@ -380,9 +411,49 @@ public class Router extends org.apache.avro.specific.SpecificRecordBase implemen
       * Clears the value of the 'serial' field.
       * @return This builder.
       */
-    public com.demo.avro.Router.Builder clearSerial() {
+    public com.ipam.demo.avro.Router.Builder clearSerial() {
       serial = null;
       fieldSetFlags()[2] = false;
+      return this;
+    }
+
+    /**
+      * Gets the value of the 'ports' field.
+      * @return The value.
+      */
+    public java.util.List<com.ipam.demo.avro.Port> getPorts() {
+      return ports;
+    }
+
+
+    /**
+      * Sets the value of the 'ports' field.
+      * @param value The value of 'ports'.
+      * @return This builder.
+      */
+    public com.ipam.demo.avro.Router.Builder setPorts(java.util.List<com.ipam.demo.avro.Port> value) {
+      validate(fields()[3], value);
+      this.ports = value;
+      fieldSetFlags()[3] = true;
+      return this;
+    }
+
+    /**
+      * Checks whether the 'ports' field has been set.
+      * @return True if the 'ports' field has been set, false otherwise.
+      */
+    public boolean hasPorts() {
+      return fieldSetFlags()[3];
+    }
+
+
+    /**
+      * Clears the value of the 'ports' field.
+      * @return This builder.
+      */
+    public com.ipam.demo.avro.Router.Builder clearPorts() {
+      ports = null;
+      fieldSetFlags()[3] = false;
       return this;
     }
 
@@ -391,9 +462,10 @@ public class Router extends org.apache.avro.specific.SpecificRecordBase implemen
     public Router build() {
       try {
         Router record = new Router();
-        record.id = fieldSetFlags()[0] ? this.id : (java.lang.CharSequence) defaultValue(fields()[0]);
-        record.name = fieldSetFlags()[1] ? this.name : (java.lang.CharSequence) defaultValue(fields()[1]);
+        record.id = fieldSetFlags()[0] ? this.id : (java.lang.Long) defaultValue(fields()[0]);
+        record.title = fieldSetFlags()[1] ? this.title : (java.lang.CharSequence) defaultValue(fields()[1]);
         record.serial = fieldSetFlags()[2] ? this.serial : (java.lang.CharSequence) defaultValue(fields()[2]);
+        record.ports = fieldSetFlags()[3] ? this.ports : (java.util.List<com.ipam.demo.avro.Port>) defaultValue(fields()[3]);
         return record;
       } catch (org.apache.avro.AvroMissingFieldException e) {
         throw e;
@@ -426,11 +498,42 @@ public class Router extends org.apache.avro.specific.SpecificRecordBase implemen
   @Override public void customEncode(org.apache.avro.io.Encoder out)
     throws java.io.IOException
   {
-    out.writeString(this.id);
+    if (this.id == null) {
+      out.writeIndex(0);
+      out.writeNull();
+    } else {
+      out.writeIndex(1);
+      out.writeLong(this.id);
+    }
 
-    out.writeString(this.name);
+    if (this.title == null) {
+      out.writeIndex(0);
+      out.writeNull();
+    } else {
+      out.writeIndex(1);
+      out.writeString(this.title);
+    }
 
-    out.writeString(this.serial);
+    if (this.serial == null) {
+      out.writeIndex(0);
+      out.writeNull();
+    } else {
+      out.writeIndex(1);
+      out.writeString(this.serial);
+    }
+
+    long size0 = this.ports.size();
+    out.writeArrayStart();
+    out.setItemCount(size0);
+    long actualSize0 = 0;
+    for (com.ipam.demo.avro.Port e0: this.ports) {
+      actualSize0++;
+      out.startItem();
+      e0.customEncode(out);
+    }
+    out.writeArrayEnd();
+    if (actualSize0 != size0)
+      throw new java.util.ConcurrentModificationException("Array-size written was " + size0 + ", but element count was " + actualSize0 + ".");
 
   }
 
@@ -439,25 +542,93 @@ public class Router extends org.apache.avro.specific.SpecificRecordBase implemen
   {
     org.apache.avro.Schema.Field[] fieldOrder = in.readFieldOrderIfDiff();
     if (fieldOrder == null) {
-      this.id = in.readString(this.id instanceof Utf8 ? (Utf8)this.id : null);
+      if (in.readIndex() != 1) {
+        in.readNull();
+        this.id = null;
+      } else {
+        this.id = in.readLong();
+      }
 
-      this.name = in.readString(this.name instanceof Utf8 ? (Utf8)this.name : null);
+      if (in.readIndex() != 1) {
+        in.readNull();
+        this.title = null;
+      } else {
+        this.title = in.readString(this.title instanceof Utf8 ? (Utf8)this.title : null);
+      }
 
-      this.serial = in.readString(this.serial instanceof Utf8 ? (Utf8)this.serial : null);
+      if (in.readIndex() != 1) {
+        in.readNull();
+        this.serial = null;
+      } else {
+        this.serial = in.readString(this.serial instanceof Utf8 ? (Utf8)this.serial : null);
+      }
+
+      long size0 = in.readArrayStart();
+      java.util.List<com.ipam.demo.avro.Port> a0 = this.ports;
+      if (a0 == null) {
+        a0 = new SpecificData.Array<com.ipam.demo.avro.Port>((int)size0, SCHEMA$.getField("ports").schema());
+        this.ports = a0;
+      } else a0.clear();
+      SpecificData.Array<com.ipam.demo.avro.Port> ga0 = (a0 instanceof SpecificData.Array ? (SpecificData.Array<com.ipam.demo.avro.Port>)a0 : null);
+      for ( ; 0 < size0; size0 = in.arrayNext()) {
+        for ( ; size0 != 0; size0--) {
+          com.ipam.demo.avro.Port e0 = (ga0 != null ? ga0.peek() : null);
+          if (e0 == null) {
+            e0 = new com.ipam.demo.avro.Port();
+          }
+          e0.customDecode(in);
+          a0.add(e0);
+        }
+      }
 
     } else {
-      for (int i = 0; i < 3; i++) {
+      for (int i = 0; i < 4; i++) {
         switch (fieldOrder[i].pos()) {
         case 0:
-          this.id = in.readString(this.id instanceof Utf8 ? (Utf8)this.id : null);
+          if (in.readIndex() != 1) {
+            in.readNull();
+            this.id = null;
+          } else {
+            this.id = in.readLong();
+          }
           break;
 
         case 1:
-          this.name = in.readString(this.name instanceof Utf8 ? (Utf8)this.name : null);
+          if (in.readIndex() != 1) {
+            in.readNull();
+            this.title = null;
+          } else {
+            this.title = in.readString(this.title instanceof Utf8 ? (Utf8)this.title : null);
+          }
           break;
 
         case 2:
-          this.serial = in.readString(this.serial instanceof Utf8 ? (Utf8)this.serial : null);
+          if (in.readIndex() != 1) {
+            in.readNull();
+            this.serial = null;
+          } else {
+            this.serial = in.readString(this.serial instanceof Utf8 ? (Utf8)this.serial : null);
+          }
+          break;
+
+        case 3:
+          long size0 = in.readArrayStart();
+          java.util.List<com.ipam.demo.avro.Port> a0 = this.ports;
+          if (a0 == null) {
+            a0 = new SpecificData.Array<com.ipam.demo.avro.Port>((int)size0, SCHEMA$.getField("ports").schema());
+            this.ports = a0;
+          } else a0.clear();
+          SpecificData.Array<com.ipam.demo.avro.Port> ga0 = (a0 instanceof SpecificData.Array ? (SpecificData.Array<com.ipam.demo.avro.Port>)a0 : null);
+          for ( ; 0 < size0; size0 = in.arrayNext()) {
+            for ( ; size0 != 0; size0--) {
+              com.ipam.demo.avro.Port e0 = (ga0 != null ? ga0.peek() : null);
+              if (e0 == null) {
+                e0 = new com.ipam.demo.avro.Port();
+              }
+              e0.customDecode(in);
+              a0.add(e0);
+            }
+          }
           break;
 
         default:

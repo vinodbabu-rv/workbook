@@ -22,7 +22,7 @@ public class Router {
     @Id @GeneratedValue
     private Long id;
 
-    private String name;
+    private String title;
 
     private String serial;
 

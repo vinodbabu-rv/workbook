@@ -24,7 +24,7 @@ public class RouterServiceImpl implements RouterService {
     @Override
     public Router create(Router r) {
         Router persistedRouter = routerRepository.save(r);
-        com.demo.avro.Router rAvro = new com.demo.avro.Router(persistedRouter.getId().toString(), persistedRouter.getName(), persistedRouter.getSerial());
+        com.demo.avro.Router rAvro = new com.demo.avro.Router(persistedRouter.getId(), persistedRouter.getTitle(), persistedRouter.getSerial());
         kafkaTemplate.send(
                 "router-topic",
                 rAvro

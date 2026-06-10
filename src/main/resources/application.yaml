@@ -7,7 +7,7 @@ spring:
     #username: postgres
     #password: testdb
   neo4j:
-    uri: bolt://localhost:7687
+    uri: bolt://host.docker.internal:7687
     authentication:
       username: neo4j
       password: testneodb

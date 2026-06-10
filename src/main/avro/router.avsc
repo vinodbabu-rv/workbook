@@ -1,19 +1,45 @@
 {
-  "namespace": "com.demo.avro",
   "type": "record",
   "name": "Router",
+  "namespace": "com.ipam.demo.avro",
   "fields": [
     {
       "name": "id",
-      "type": "string"
+      "type": ["null", "long"],
+      "default": null
     },
     {
-      "name": "name",
-      "type": "string"
+      "name": "title",
+      "type": ["null", "string"],
+      "default": null
     },
     {
       "name": "serial",
-      "type": "string"
+      "type": ["null", "string"],
+      "default": null
+    },
+    {
+      "name": "ports",
+      "type": {
+        "type": "array",
+        "items": {
+          "type": "record",
+          "name": "Port",
+          "fields": [
+            {
+              "name": "id",
+              "type": ["null", "long"],
+              "default": null
+            },
+            {
+              "name": "name",
+              "type": ["null", "string"],
+              "default": null
+            }
+          ]
+        }
+      },
+      "default": []
     }
   ]
 }
